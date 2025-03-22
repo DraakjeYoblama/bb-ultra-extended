@@ -1,0 +1,28 @@
+{
+    "name": "bb-ultra-extended",
+    "version": "1.0.0",
+    "description": "Multitool browser add-on for Blackboard Learn Ultra",
+    "author": "DraakjeYoblama",
+    "license": "BSD-3-Clause",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DraakjeYoblama/bb-ultra-extended.git"
+    },
+    "bugs": {
+        "url": "https://github.com/DraakjeYoblama/bb-ultra-extended/issues"
+    },
+    "homepage": "https://github.com/DraakjeYoblama/bb-ultra-extended",
+    "scripts": {
+        "build-web-ext": "web-ext build --source-dir _dist --artifacts-dir _build\\ --overwrite-dest",
+        "check-web-ext": "web-ext lint --source-dir _dist",
+        "build:firefox": "npm run copy:firefox && npm run build-web-ext",
+        "build:chrome": "npm run copy:chrome && npm run build-web-ext",
+        "copy:common": "rmdir /s /q _dist\\ & xcopy /S /Y src\\* _dist\\ /EXCLUDE:exclude-from-build.txt",
+        "copy:firefox": "npm run copy:common && echo F|xcopy /Y src\\manifest-v2.json _dist\\manifest.json",
+        "copy:chrome": "npm run copy:common && echo F|xcopy /Y src\\manifest-v3.json _dist\\manifest.json",
+        "clean": "rmdir /s /q _build\\ _dist\\"
+    },
+    "devDependencies": {
+        "web-ext": "^8.5.0"
+    }
+}

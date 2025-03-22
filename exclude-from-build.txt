@@ -1,0 +1,3 @@
+src\manifest-v2.json
+src\manifest-v3.json
+README.md

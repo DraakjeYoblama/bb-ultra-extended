@@ -1,3 +1,18 @@
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Build output directories
+_dist/
+_build/
+
+# Temporary files
+*.tmp
+
 # Logs
 logs
 *.log
