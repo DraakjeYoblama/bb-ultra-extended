@@ -1,0 +1,7 @@
+{
+    "modules": [
+        "doc-viewer-plus",
+        "native-pdf-viewer",
+        "keyboard-navigation"
+    ]
+}

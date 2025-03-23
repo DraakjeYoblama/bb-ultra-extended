@@ -1,0 +1,21 @@
+{
+    "name": "Native PDF Viewer",
+    "description": "Created by Tarik Kirgin",
+    "contributors": [
+        "Tarik Kirgin",
+        "Douwe Somers"
+    ],
+    "icon": "icon.png",
+    "version": "1.0.0",
+    "contentScriptParams": {
+        "id": "native-pdf-viewer",
+        "matches": [
+            "*://*.api.blackboard.com/*",
+            "*://*/ultra/*"
+        ],
+        "allFrames": true,
+        "js": [
+            "native-pdf-viewer.js"
+        ]
+    }
+}

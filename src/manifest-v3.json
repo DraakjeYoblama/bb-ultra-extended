@@ -3,10 +3,10 @@
     "name": "Blackboard Ultra Extended",
     "version": "1.0",
     "description": "Multitool browser add-on for Blackboard Learn Ultra",
-    "author": "DraakjeYoblama",
+    "author": "Douwe Somers",
     "background": {
         "scripts": [
-            "main.js"
+            "module-loader.js"
         ]
     },
     "permissions": [

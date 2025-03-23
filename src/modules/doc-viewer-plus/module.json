@@ -1,0 +1,21 @@
+{
+    "name": "Doc Viewer+",
+    "description": "Created by Raj Kundu",
+    "contributors": [
+        "Raj Kundu",
+        "Douwe Somers"
+    ],
+    "icon": "",
+    "version": "1.0.0",
+    "contentScriptParams": {
+        "id": "doc-viewer-plus",
+        "matches": [
+            "*://*.api.blackboard.com/*",
+            "*://*/ultra/*"
+        ],
+        "allFrames": true,
+        "js": [
+            "doc-viewer-plus.js"
+        ]
+    }
+}

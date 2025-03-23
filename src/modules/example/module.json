@@ -1,0 +1,28 @@
+{
+    "name": "Example Module",
+    "description": "This is an example module",
+    "contributors": [
+        "Douwe Somers"
+    ],
+    "icon": "icon.png",
+    "version": "1.0.0",
+    "options": {
+        "color-id": "colorpicker",
+        "text-id": "text",
+        "image-id": "image"
+    },
+    "contentScriptParams": {
+        "id": "example",
+        "matches": [
+            "*://*.api.blackboard.com/*",
+            "*://*/ultra/*"
+        ],
+        "allFrames": true,
+        "js": [
+            "example.js"
+        ],
+        "css": [
+            "example.css"
+        ]
+    }
+}
