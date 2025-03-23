@@ -4,16 +4,14 @@
     "version": "1.0",
     "description": "Multitool browser add-on for Blackboard Learn Ultra",
     "author": "DraakjeYoblama",
-    "content_scripts": [
-        {
-            "matches": [
-                "*://*.api.blackboard.com/*",
-                "*://*/ultra/*"
-            ],
-            "js": [
-                "main.js"
-            ],
-            "all_frames": true
-        }
+    "background": {
+        "scripts": [
+            "main.js"
+        ]
+    },
+    "permissions": [
+        "scripting",
+        "*://*.api.blackboard.com/*",
+        "*://*/ultra/*"
     ]
 }
