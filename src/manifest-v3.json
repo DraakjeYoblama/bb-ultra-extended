@@ -4,10 +4,28 @@
     "version": "1.0",
     "description": "Multitool browser add-on for Blackboard Learn Ultra",
     "author": "Douwe Somers",
+    "icons": {
+        "16": "icon/icon-16.png",
+        "24": "icon/icon-24.png",
+        "32": "icon/icon-32.png",
+        "48": "icon/icon-48.png",
+        "64": "icon/icon-64.png",
+        "96": "icon/icon-96.png"
+    },
+    "action": {
+        "default_icon": {
+            "16": "icon/icon-16.png",
+            "24": "icon/icon-24.png",
+            "32": "icon/icon-32.png",
+            "48": "icon/icon-48.png",
+            "64": "icon/icon-64.png",
+            "96": "icon/icon-96.png"
+        },
+        "default_title": "Blackboard Ultra Extended",
+        "default_popup": "popup/popup.html"
+    },
     "background": {
-        "scripts": [
-            "module-loader.js"
-        ]
+        "service_worker": "module-loader.js"
     },
     "permissions": [
         "scripting",
