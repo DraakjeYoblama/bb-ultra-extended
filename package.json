@@ -13,16 +13,21 @@
     },
     "homepage": "https://github.com/DraakjeYoblama/bb-ultra-extended",
     "scripts": {
-        "build-web-ext": "web-ext build --source-dir _dist --artifacts-dir _build\\ --overwrite-dest",
-        "check-web-ext": "web-ext lint --source-dir _dist",
-        "build:firefox": "npm run copy:firefox && npm run build-web-ext",
-        "build:chrome": "npm run copy:chrome && npm run build-web-ext",
-        "copy:common": "rmdir /s /q _dist\\ & xcopy /S /Y src\\* _dist\\ /EXCLUDE:exclude-from-build.txt",
+        "web-ext:build": "npx web-ext build --source-dir _dist --artifacts-dir _build\\ --overwrite-dest",
+        "web-ext:check": "npx web-ext lint --source-dir _dist",
+        "web-ext:run": "npm run eleventy:start & web-ext run --artifacts-dir _build\\ --overwrite-dest",
+        "build:firefox": "npm run copy:firefox && npm run web-ext:build",
+        "build:chrome": "npm run copy:chrome && npm run web-ext:build",
+        "copy:common": "rmdir /s /q _dist\\ & npm run eleventy:build",
         "copy:firefox": "npm run copy:common && echo F|xcopy /Y src\\manifest-v2.json _dist\\manifest.json",
         "copy:chrome": "npm run copy:common && echo F|xcopy /Y src\\manifest-v3.json _dist\\manifest.json",
-        "clean": "rmdir /s /q _build\\ _dist\\"
+        "clean": "rmdir /s /q _build\\ _dist\\",
+        "eleventy:build": "npx @11ty/eleventy",
+        "eleventy:start": "npx @11ty/eleventy --serve",
+        "eleventy:debug": "DEBUG=* npx @11ty/eleventy"
     },
     "devDependencies": {
+        "@11ty/eleventy": "^3.0.0",
         "web-ext": "^8.5.0"
     }
 }
