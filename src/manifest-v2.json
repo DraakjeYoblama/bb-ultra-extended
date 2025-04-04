@@ -24,6 +24,12 @@
         "default_title": "Blackboard Ultra Extended",
         "default_popup": "popup/popup.html"
     },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "bb-ultra-extended@draakjeyoblama.net",
+            "strict_min_version": "102.0"
+        }
+    },
     "background": {
         "scripts": [
             "module-loader.js"
