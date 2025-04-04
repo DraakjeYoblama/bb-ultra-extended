@@ -6,7 +6,6 @@
         "Douwe Somers"
     ],
     "icon": "",
-    "version": "1.0.0",
     "contentScriptParams": {
         "id": "keyboard-navigation",
         "matches": [
