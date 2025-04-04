@@ -16,6 +16,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/modules");
   eleventyConfig.addPassthroughCopy({ "src/manifest-v2.json": "manifest.json" });
 
+
+  // filter to convert an object to a JSON string
+  eleventyConfig.addFilter('stringify', (data) => {
+      return JSON.stringify(data, null, "\t")
+    })
+
   // return object options in the object starting on the line below
   return {
     markdownTemplateEngine: "false",
