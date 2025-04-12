@@ -13,18 +13,15 @@
     },
     "homepage": "https://github.com/DraakjeYoblama/bb-ultra-extended",
     "scripts": {
-        "web-ext:build": "npx web-ext build --source-dir _dist --artifacts-dir _build\\ --overwrite-dest",
-        "web-ext:check": "npx web-ext lint --source-dir _dist",
-        "web-ext:run": "npm run eleventy:start & web-ext run --artifacts-dir _build\\ --overwrite-dest",
-        "build:firefox": "npm run copy:firefox && npm run web-ext:build",
-        "build:chrome": "npm run copy:chrome && npm run web-ext:build",
-        "copy:common": "rmdir /s /q _dist\\ & npm run eleventy:build",
-        "copy:firefox": "npm run copy:common && echo F|xcopy /Y src\\manifest-v2.json _dist\\manifest.json",
-        "copy:chrome": "npm run copy:common && echo F|xcopy /Y src\\manifest-v3.json _dist\\manifest.json",
-        "clean": "rmdir /s /q _build\\ _dist\\",
-        "eleventy:build": "npx @11ty/eleventy",
-        "eleventy:start": "npx @11ty/eleventy --serve",
-        "eleventy:debug": "DEBUG=* npx @11ty/eleventy"
+        "firefox:copy": "npx @11ty/eleventy --config=.eleventy.firefox.js",
+        "firefox:build": "npm run copy:firefox && npm run firefox:buildcurrent",
+        "firefox:buildcurrent": "npx web-ext build --source-dir _dist/firefox --artifacts-dir _build\\ --filename={name}-firefox-{version}.zip --overwrite-dest",
+        "firefox:lint": "npx web-ext lint --source-dir _dist/firefox",
+        "chrome:copy": "npx @11ty/eleventy --config=.eleventy.chrome.js",
+        "chrome:build": "npm run copy:chrome && npm run chrome:buildcurrent",
+        "chrome:buildcurrent": "npx web-ext build --source-dir _dist/chrome --artifacts-dir _build\\ --filename={name}-chrome-{version}.zip --overwrite-dest",
+        "chrome:lint": "npx web-ext lint --source-dir _dist/chrome",
+        "clean": "rmdir /s /q _build\\ _dist\\"
     },
     "devDependencies": {
         "@11ty/eleventy": "^3.0.0",
