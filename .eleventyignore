@@ -3,3 +3,5 @@ src/manifest-v3.json
 **/readme.md
 **/template.*
 *.psd
+src/modules/
+module.json

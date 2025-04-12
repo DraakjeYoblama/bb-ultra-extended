@@ -1,3 +1,5 @@
+const include = require('./src/modules/include.json');
+
 module.exports = function (eleventyConfig) {
     // These are the settings for all browsers
     // for browser specific settings, see .eleventy.browser.js
@@ -15,7 +17,12 @@ module.exports = function (eleventyConfig) {
 
     // files that are copied directly, without processing
     eleventyConfig.addPassthroughCopy("LICENSE");
-    eleventyConfig.addPassthroughCopy("src/modules");
+
+    // included modules
+    for (const moduleName of include.modules) {
+        eleventyConfig.addPassthroughCopy(
+            `src/modules/${moduleName}`, { filter: ['*', '!module.json'] });
+    }
 
     // filter to convert an object to a JSON string
     eleventyConfig.addFilter('stringify', (data) => {
