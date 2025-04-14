@@ -6,6 +6,7 @@
     ],
     "icon": "icon.png",
     "options": {
+        "enable": true,
         "color-id": "colorpicker",
         "text-id": "text",
         "image-id": "image"

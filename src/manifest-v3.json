@@ -29,6 +29,7 @@
     },
     "permissions": [
         "scripting",
+        "storage",
         "*://*.api.blackboard.com/*",
         "*://*/ultra/*"
     ]

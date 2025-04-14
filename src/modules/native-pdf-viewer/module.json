@@ -5,7 +5,9 @@
         "Tarik Kirgin",
         "Douwe Somers"
     ],
-    "icon": "icon.png",
+    "options": {
+        "enable": true
+    },
     "contentScriptParams": {
         "id": "native-pdf-viewer",
         "matches": [

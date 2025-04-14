@@ -5,7 +5,9 @@
         "Raj Kundu",
         "Douwe Somers"
     ],
-    "icon": "",
+    "options": {
+        "enable": true
+    },
     "contentScriptParams": {
         "id": "keyboard-navigation",
         "matches": [

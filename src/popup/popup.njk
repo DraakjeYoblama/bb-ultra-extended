@@ -9,6 +9,7 @@ permalink: /popup/popup.html
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Popup</title>
     <link rel="stylesheet" href="popup.css">
+    <script src="popup.js"></script>
   </head>
 
   <body>
@@ -25,7 +26,7 @@ permalink: /popup/popup.html
       <img src="../modules/{{ moduleFolder }}/{{ module.icon }}" alt="{{ module.name }}" class="icon">
       {%- endif %}
       <label class="switch">
-        <input type="checkbox" checked>
+        <input type="checkbox" unchecked>
         <span class="slider round"></span>
       </label>
     </div>

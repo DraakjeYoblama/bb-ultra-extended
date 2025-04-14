@@ -3,16 +3,37 @@ permalink: module-loader.js
 ---
 const includedModules = {{ includedModules | stringify | safe }};
 
-function includeModuleParams(includedModules) {
-const includedModuleParams = [];
-// TODO: make this add modules based on the popup menu selection
+async function includeModuleParams(includedModules) {
+    const includedModuleParams = [];
     for (const [module, moduleObj] of Object.entries(includedModules)) {
-        includedModuleParams.push(moduleObj.contentScriptParams);
+        try {
+            const result = await browser.storage.sync.get(moduleObj.contentScriptParams.id);
+            if (result[moduleObj.contentScriptParams.id] === undefined || result[moduleObj.contentScriptParams.id].enabled === undefined) {
+                // if setting is undefined, check if the module is enabled by default
+                // save the default value to settings
+                await browser.storage.sync.set({ [moduleObj.contentScriptParams.id]: { enabled: moduleObj.options.enable } });
+                console.log(`Applied default value for ${moduleObj.contentScriptParams.id}: ${moduleObj.options.enable}`);
+                // also add module
+                if (moduleObj.options.enable) {
+                    includedModuleParams.push(moduleObj.contentScriptParams);
+                }
+            } else if (result[moduleObj.contentScriptParams.id].enabled) {
+                // if setting is defined, use it
+                includedModuleParams.push(moduleObj.contentScriptParams);
+            }
+        } catch (err) {
+            console.error(`Failed to get settings: ${err}`);
+        }
     }
     return includedModuleParams;
 }
 
+// TODO: make it work with CSS if it doesn't already
 async function registerContentScript(scriptArray) {
+    if (scriptArray.length === 0) {
+        console.log('No content scripts to register.');
+        return;
+    }
     try {
         await browser.scripting.registerContentScripts(scriptArray);
         console.log('Content scripts registered successfully.');
@@ -21,5 +42,7 @@ async function registerContentScript(scriptArray) {
     }
 }
 
-includedModuleParams = includeModuleParams(includedModules);
-registerContentScript(includedModuleParams);
+(async () => {
+    const includedModuleParams = await includeModuleParams(includedModules);
+    await registerContentScript(includedModuleParams);
+})();
