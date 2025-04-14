@@ -12,15 +12,26 @@ permalink: /popup/popup.html
   </head>
 
   <body>
-    <h1>Blackboard Ultra Extended</h1>
+    <header>
+      <h1>Blackboard Ultra Extended</h1>
+    </header>
     {%- for moduleFolder, module in includedModules %}
     <div id="{{ module.contentScriptParams.id }}" class="module">
-      <h2>{{ module.name }}</h2>
-      <p>{{ module.description }}</p>
-      {%- if module.image != null %}
-      <img src="../{{ moduleFolder }}/{{ module.image }}" alt="{{ module.name }}">
+      <div class="description">
+        <h2>{{ module.name }}</h2>
+        <p>{{ module.description }}</p>
+      </div>
+      {%- if module.icon != null %}
+      <img src="../modules/{{ moduleFolder }}/{{ module.icon }}" alt="{{ module.name }}" class="icon">
       {%- endif %}
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
     </div>
+    {%- if not loop.last %}
+    <hr>
+    {%- endif %}
     {%- endfor %}
   </body>
 

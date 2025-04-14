@@ -1,5 +1,158 @@
-body {
-    width: 300px;
-    height: 800px;
-    margin: 50px 50px;
+:root {
+    --slider-on: #22b14c;
+    --slider-off: #ccc;
+    --background-dark: #232323;
+    --logo-gradient: linear-gradient(to right, #0054bc, #0dab15);
 }
+
+/* begin fonts definition */
+@font-face {
+    font-family: ITCAvantGardeGothic;
+    src: url(../fonts/itc-avant-garde-gothic-medium.otf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: ITCAvantGardeGothic;
+    src: url(../fonts/itc-avant-garde-gothic-bold.otf);
+    font-weight: 700;
+}
+/* end fonts definition */
+
+body {
+    width: 430px;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*begin header style*/
+header {
+    background-color: var(--background-dark);
+}
+
+h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    font-family: ITCAvantGardeGothic, Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    padding: 25px 50px;
+}
+
+/*end header style*/
+
+h2 {
+    font-size: 1.2rem;
+    font-family: ITCAvantGardeGothic, Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+p {
+    font-size: 0.9rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    width: 95%;
+    background-color: #ccc;
+    margin: 0 auto;
+}
+
+/* begin module style */
+.module {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    padding: 15px;
+    gap: 16px;
+
+}
+
+.description {
+    order: 2;
+    flex-grow: 1;
+    overflow-wrap: anywhere;
+}
+
+.description h2 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.description p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.icon {
+    order: 1;
+    width: 56px;
+}
+
+.switch {
+    order: 3;
+    margin-top: 14px;
+    flex-shrink: 0;
+}
+/* end module style */
+
+/* Begin slider button style */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--slider-off);
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--slider-on);
+}
+
+input:focus-visible+.slider {
+    outline: 2px solid black;
+    transition: 0s;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+/* End slider button style */

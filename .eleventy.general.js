@@ -17,6 +17,7 @@ module.exports = function (eleventyConfig) {
 
     // files that are copied directly, without processing
     eleventyConfig.addPassthroughCopy("LICENSE");
+    eleventyConfig.addPassthroughCopy("src/fonts");
 
     // included modules
     for (const moduleName of include.modules) {
