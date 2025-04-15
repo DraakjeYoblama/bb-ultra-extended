@@ -3,6 +3,7 @@ permalink: module-loader.js
 ---
 const includedModules = {{ includedModules | stringify | safe }};
 
+// Create the array of content script parameters from includedModules and the settings
 async function includeModuleParams(includedModules) {
     const includedModuleParams = [];
     for (const [module, moduleObj] of Object.entries(includedModules)) {
@@ -29,7 +30,8 @@ async function includeModuleParams(includedModules) {
 }
 
 // TODO: make it work with CSS if it doesn't already
-async function registerContentScript(scriptArray) {
+// needs an array of content script parameters
+async function registerContentScriptArray(scriptArray) {
     if (scriptArray.length === 0) {
         console.log('No content scripts to register.');
         return;
@@ -42,7 +44,50 @@ async function registerContentScript(scriptArray) {
     }
 }
 
+// for one content script, wrap in an array
+async function registerContentScript(contentScriptParamsObj) {
+    registerContentScriptArray([contentScriptParamsObj]);
+}
+
+// needs an array of content script IDs
+async function unregisterContentScriptIDArray(scriptIDArray) {
+    if (scriptIDArray.length === 0) {
+        console.log('No content scripts to unregister.');
+        return;
+    }
+    try {
+        await browser.scripting.unregisterContentScripts({
+            ids: scriptIDArray,
+        });
+        console.log('Content scripts unregistered successfully.');
+    } catch (err) {
+        console.error(`failed to unregister content scripts: ${err}`);
+    }
+}
+
+// for one content script, wrap in an array
+async function unregisterContentScriptID(scriptID) {
+    unregisterContentScriptIDArray([scriptID]);
+}
+
+// on starting the extension, check if the modules are enabled and register them
 (async () => {
     const includedModuleParams = await includeModuleParams(includedModules);
-    await registerContentScript(includedModuleParams);
+    await registerContentScriptArray(includedModuleParams);
 })();
+
+// Listen for messages from the popup script to update the content scripts
+browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "setData") {
+        Object.entries(message.data).forEach(([key, value]) => {
+            if (value.enabled) {
+                // Register the content script if it is enabled
+                registerContentScript(includedModules[key].contentScriptParams);
+            }
+            else {
+                // Unregister the content script if it is disabled
+                unregisterContentScriptID(includedModules[key].contentScriptParams.id);
+            }
+        });
+    }
+});

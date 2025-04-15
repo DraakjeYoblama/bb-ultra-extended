@@ -5,6 +5,9 @@ function saveOptions(e) {
     const data = { [module.id]: { enabled: enabled } }; // TODO make this be able to store more information
     browser.storage.sync.set(data);
     console.log(`Saved ${module.id}`);
+
+    // Send data to the background script
+    browser.runtime.sendMessage({ action: "setData", data: data });
 }
 
 function restoreOptions() {
