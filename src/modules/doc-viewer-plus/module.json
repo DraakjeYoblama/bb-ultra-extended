@@ -1,6 +1,6 @@
 {
     "name": "Doc Viewer+",
-    "description": "Created by Raj Kundu",
+    "description": "Extends the built-in PDF viewer. \nBased on an extension by Raj Kundu.",
     "contributors": [
         "Raj Kundu",
         "Douwe Somers"

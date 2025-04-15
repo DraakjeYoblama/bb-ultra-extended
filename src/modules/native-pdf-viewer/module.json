@@ -1,6 +1,6 @@
 {
     "name": "Native PDF Viewer",
-    "description": "Created by Tarik Kirgin",
+    "description": "Replaces the built-in PDF viewer with the browser default. \nBased on an extension by Tarik Kirgin.",
     "contributors": [
         "Tarik Kirgin",
         "Douwe Somers"

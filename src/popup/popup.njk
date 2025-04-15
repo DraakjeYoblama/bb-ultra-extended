@@ -20,7 +20,7 @@ permalink: /popup/popup.html
     <div id="{{ module.contentScriptParams.id }}" class="module">
       <div class="description">
         <h2>{{ module.name }}</h2>
-        <p>{{ module.description }}</p>
+        <p>{{ module.description | nl2br | safe }}</p>
       </div>
       {%- if module.icon != null %}
       <img src="../modules/{{ moduleFolder }}/{{ module.icon }}" alt="{{ module.name }}" class="icon">

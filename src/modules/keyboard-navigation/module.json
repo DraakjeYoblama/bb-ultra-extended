@@ -1,6 +1,6 @@
 {
     "name": "Keyboard navigation",
-    "description": "Use the keyboard to navigate",
+    "description": "Use escape to close panes. \nBased on an extension by Raj Kundu.",
     "contributors": [
         "Raj Kundu",
         "Douwe Somers"

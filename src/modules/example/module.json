@@ -1,6 +1,6 @@
 {
     "name": "Example Module",
-    "description": "This is an example module. It adds a red border to the page to show the plugin is working. It also gives an example of how to use the module.json file.",
+    "description": "This is an example module. It adds a red border to the page to show the plugin is working. \nIt also gives an example of how to use the module.json file.",
     "contributors": [
         "Douwe Somers"
     ],
