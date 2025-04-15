@@ -16,14 +16,14 @@
         "firefox:copy": "npx @11ty/eleventy --config=.eleventy.firefox.js",
         "firefox:cleancopy": "npx del-cli _dist/firefox && npx @11ty/eleventy --config=.eleventy.firefox.js",
         "firefox:build": "npm run firefox:cleancopy && npm run firefox:buildcurrent",
-        "firefox:buildcurrent": "npx web-ext build --source-dir _dist/firefox --artifacts-dir _build\\ --filename={name}-firefox-{version}.zip --overwrite-dest",
+        "firefox:buildcurrent": "npx web-ext build --source-dir _dist/firefox --artifacts-dir _dist --filename={name}-firefox-{version}.xpi --overwrite-dest",
         "firefox:lint": "npx web-ext lint --source-dir _dist/firefox",
         "chrome:copy": "npx @11ty/eleventy --config=.eleventy.chrome.js",
         "chrome:cleancopy": "npx del-cli _dist/chrome && npx @11ty/eleventy --config=.eleventy.chrome.js",
         "chrome:build": "npm run chrome:cleancopy && npm run chrome:buildcurrent",
-        "chrome:buildcurrent": "npx web-ext build --source-dir _dist/chrome --artifacts-dir _build\\ --filename={name}-chrome-{version}.zip --overwrite-dest",
+        "chrome:buildcurrent": "npx web-ext build --source-dir _dist/chrome --artifacts-dir _dist --filename={name}-chrome-{version}.zip --overwrite-dest",
         "chrome:lint": "npx web-ext lint --source-dir _dist/chrome",
-        "clean": "npx del-cli _build _dist"
+        "clean": "npx del-cli _dist"
     },
     "devDependencies": {
         "@11ty/eleventy": "^3.0.0",
