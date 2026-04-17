@@ -1,6 +1,6 @@
 {
     "name": "Keyboard navigation",
-    "description": "Use escape to close panes. \nBased on an extension by Raj Kundu.",
+    "description": "Use escape to close panes, use arrows to go to next and previous panes. \nBased on an extension by Raj Kundu.",
     "contributors": [
         "Raj Kundu",
         "Douwe Somers"
