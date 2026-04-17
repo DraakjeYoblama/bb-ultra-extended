@@ -5,8 +5,8 @@ module.exports = function (eleventyConfig) {
     // You can edit these in .eleventy.general.js
     generalSettings(eleventyConfig);
 
-    // files that are copied directly, without processing
-    eleventyConfig.addPassthroughCopy({ "src/manifest-v3.json": "manifest.json" });
+    // Browser-specific build flag for template selection
+    eleventyConfig.addGlobalData("browser", "chrome");
 };
 
 const generalConfig = generalSettings.config;

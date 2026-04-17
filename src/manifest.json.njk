@@ -1,7 +1,10 @@
+---
+permalink: manifest.json
+---
 {
-    "manifest_version": 2,
+    "manifest_version": {% if browser == "chrome" %}3{% else %}2{% endif %},
     "name": "Blackboard Ultra Extended",
-    "version": "1.1.0",
+    "version": "{{ version }}",
     "description": "Multitool browser add-on for Blackboard Learn Ultra",
     "author": "Douwe Somers",
     "icons": {
@@ -12,7 +15,7 @@
         "64": "icon/icon-64.png",
         "96": "icon/icon-96.png"
     },
-    "browser_action": {
+    "{% if browser == "firefox" %}browser_{% endif %}action": {
         "default_icon": {
             "16": "icon/icon-16.png",
             "24": "icon/icon-24.png",
@@ -24,6 +27,7 @@
         "default_title": "Blackboard Ultra Extended",
         "default_popup": "popup/popup.html"
     },
+    {%- if browser == "firefox" %}
     "browser_specific_settings": {
         "gecko": {
             "id": "bb-ultra-extended@draakjeyoblama.net",
@@ -35,6 +39,11 @@
             "module-loader.js"
         ]
     },
+    {% elif chrome %}
+    "background": {
+        "service_worker": "module-loader.js"
+    },
+    {% endif -%}
     "permissions": [
         "scripting",
         "storage",
