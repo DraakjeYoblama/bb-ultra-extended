@@ -27,7 +27,7 @@
     },
     "devDependencies": {
         "@11ty/eleventy": "^3.0.0",
-        "web-ext": "^8.5.0",
+        "web-ext": "^10.1.0",
         "del-cli": "^7.0.0"	
     }
 }
